@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Solana Wallet Explorer</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header with Settings Icon -->
+    <div class="header">
+      <div class="header-left">
+        <img src="https://solana.com/favicon.ico" style="width: 28px; height: 28px;">
+        <h2 class="header-title">Solana Explorer</h2>
+      </div>
+      <div class="settings-icon" id="settingsIcon">
+        <i class="fas fa-cog"></i>
+      </div>
+    </div>
+
+    <!-- Wallet Input Section -->
+    <div class="glass-effect input-section" id="inputSection">
+      <div style="padding: 24px;">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.7);">
+            Private Key
+          </label>
+          <input type="text" id="privateKey" class="input-field" 
+                 placeholder="Enter your private key">
+          <div style="font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px;">
+            Supports both Phantom (Base58) and Solflare (Array) private key formats
+          </div>
+        </div>
+        <button id="loadWallet" class="button" style="width: 100%;">
+          <i class="fas fa-wallet" style="margin-right: 8px;"></i>
+          Load Wallet
+        </button>
+      </div>
+    </div>
+
+    <!-- Wallet Info Section -->
+    <div id="walletInfo" style="display: none;">
+      <!-- Balance Card -->
+      <div class="balance-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="color: rgba(255,255,255,0.7); margin-bottom: 4px;">Total Balance</div>
+            <div style="font-size: 32px; font-weight: 700;">
+              <span id="walletBalance">0.00</span> SOL
+            </div>
+          </div>
+          <div class="badge">
+            <i class="fas fa-check-circle" style="margin-right: 4px;"></i>
+            Connected
+          </div>
+        </div>
+        <div style="margin-top: 16px;">
+          <div style="color: rgba(255,255,255,0.7);">Address:</div>
+          <div class="wallet-address" id="walletAddress"></div>
+        </div>
+      </div>
+
+      <!-- Send Section -->
+      <div class="glass-effect" style="padding: 24px; margin-bottom: 24px;">
+        <div class="section-title">
+          <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+          Send SOL
+        </div>
+        <div style="margin-bottom: 16px;">
+          <input type="text" id="recipientAddress" class="input-field" 
+                 placeholder="Recipient Address">
+        </div>
+        <div style="margin-bottom: 16px;">
+          <input type="number" id="amount" class="input-field" 
+                 placeholder="Amount in SOL">
+        </div>
+        <button id="sendButton" class="button" style="width: 100%;">
+          Send Transaction
+        </button>
+      </div>
+
+      <!-- Transactions Section -->
+      <div class="section-title">
+        <i class="fas fa-history" style="margin-right: 8px;"></i>
+        Recent Transactions
+      </div>
+      <div id="transactionList"></div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="settings-modal" id="settingsModal">
+      <h3>
+        <i class="fas fa-cog" style="margin-right: 8px;"></i>
+        Settings
+      </h3>
+      
+      <button class="settings-button" id="showPrivateKey">
+        <i class="fas fa-eye"></i>
+        Show Private Key
+      </button>
+      
+      <button class="settings-button" id="hidePrivateKey" style="display: none;">
+        <i class="fas fa-eye-slash"></i>
+        Hide Private Key
+      </button>
+      
+      <div id="privateKeyDisplay" style="display: none;">
+        <div class="private-key-box">
+          <div style="color: rgba(255,255,255,0.7); margin-bottom: 8px; font-size: 12px;">
+            Private Key:
+          </div>
+          <div class="private-key-content"></div>
+        </div>
+      </div>
+      
+      <button class="settings-button secondary" id="closeSettings">
+        <i class="fas fa-times"></i>
+        Close
+      </button>
+    </div>
+  </div>
+  
+  <script src="dist/bundle.js"></script>
+</body>
+</html> 

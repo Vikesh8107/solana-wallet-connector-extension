@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Solana Wallet Explorer",
+  "version": "1.0",
+  "description": "View Solana wallet transactions and send SOL",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon.png"
+
+  },
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+} 
